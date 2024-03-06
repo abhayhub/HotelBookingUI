@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { useMutation, useQueryClient } from "react-query";
 import * as apiClient from '../api-client'
 import { useAppContext } from "../contexts/AppContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export type SignInFormData = {
     email: string;
@@ -18,6 +18,7 @@ export default function SignIn() {
     
     const mutation = useMutation(apiClient.signIn, {
         onSuccess: async ()=> {
+            //invalidateQueries is a method used to mark queries as stale and trigger a refetch
             await queryClient.invalidateQueries("validateToken");
             //show the toast
             //navigate to the home page
@@ -47,6 +48,9 @@ export default function SignIn() {
             <input className="border rounded w-full py-1 px-2 font-normal" {...register("password",{required: "This field is required" ,minLength:{value: 6,message: "Password must be at least 6 characters"}})}></input>
             {errors.password && (<span className="text-red-500">{errors.password?.message}</span>)}
     </label>
+    <span>Not Registered?
+    <Link to={"/register"} className="underline px-2">create an account here</Link>
+    </span>
     <span>
     <button type="submit" className="bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl">Login</button>
     </span>

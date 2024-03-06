@@ -20,7 +20,7 @@ export default function Header() {
             <SignOutButton />
             </> : <>
             <Link to="/sign-in" className="flex items-center text-blue-600 px-3 font-bold bg-gray-100 cursor-pointer rounded-md">
-                Sign in
+                Sign In
             </Link></>}
 
         </span>
