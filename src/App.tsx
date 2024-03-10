@@ -6,16 +6,24 @@ import LayoutOne from "./layouts/LayoutOne"
 import SignIn from "./pages/SignIn"
 import AddHotel from "./pages/AddHotel"
 import { useAppContext } from "./contexts/AppContext"
+import MyHotels from "./pages/MyHotels"
 
 function App() {
   const {isLoggedIn} = useAppContext();
   return (
     <Routes>
 
-        {isLoggedIn && (<>
+        {isLoggedIn && (
+        <>
         <Route path="/add-hotel" element={
           <LayoutOne>
             <AddHotel />
+          </LayoutOne>
+        }
+        />
+        <Route path="/my-hotels" element={
+          <LayoutOne>
+            <MyHotels />
           </LayoutOne>
         }
         />

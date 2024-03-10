@@ -2,6 +2,7 @@ import  React, { useContext, useState }  from 'react';
 import Toast from '../components/Toast';
 import { useQuery } from 'react-query';
 import * as apiClient from '../api-client';
+
 type ToastMessage = {
     message: string;
     type: "SUCCESS" | "ERROR";
@@ -18,7 +19,7 @@ export const AppContextProvider = ({children}: {children: React.ReactNode}) => {
     
     const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
     
-    //Note:- The useQuery hook makes one fetch request during the first load, but does not refetch on subsequent renders to do refetch you can invalidateQueries refer "sigIn page"
+    //Note:- The useQuery hook makes one fetch request during the first load, but does not refetch on subsequent renders to do refetching you can invalidateQueries refer "sigIn page"
     const {isError} = useQuery("validateToken", apiClient.validateToken, {retry: false});
     
     return(
