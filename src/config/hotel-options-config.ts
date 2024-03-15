@@ -21,5 +21,7 @@ export const hotelFacilities = [
     "Family Rooms",
     "Outdoor Pool",
     "Spa",
+    "Bar",
     "Fitness Center",
+    "Free Wifi",
 ];
